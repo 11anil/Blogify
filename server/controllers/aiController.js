@@ -29,7 +29,7 @@ const generateBlogDescription = async (req, res) => {
         }
 
         const genAI = new GoogleGenerativeAI(apiKey);
-        const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+        const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
         const prompt = `Write a detailed, structured blog description in HTML format for a blog titled "${title}" with the subtitle "${subTitle}". 
         The output should be professional, engaging, and ready to be inserted into a rich text editor. 
