@@ -4,7 +4,11 @@ import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { useAuth, useUser } from "@clerk/clerk-react";
 
-axios.defaults.baseURL = import.meta.env.VITE_BASE_URL;
+const baseURL = import.meta.env.VITE_BASE_URL;
+if (import.meta.env.PROD && (!baseURL || baseURL.includes("localhost"))) {
+    console.warn("WARNING: VITE_BASE_URL is pointing to localhost or is not set in production. Please set VITE_BASE_URL in your Vercel project environment variables.");
+}
+axios.defaults.baseURL = baseURL;
 
 const AppContext = createContext();
 
